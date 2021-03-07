@@ -56,6 +56,9 @@
         <div class="col-lg-12">
           <h1 class="display-4 text-white mt-5 mb-2">{{ nome_empresa }}</h1>
           <p class="lead mb-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus ab labore provident mollitia. Id assumenda voluptate earum corporis facere quibusdam quisquam iste ipsa cumque unde nisi, totam quas ipsam.</p>
+        {% comment %}
+          Aqui será um comentario que não será exibido na página!
+        {% endcomment %}
         </div>
       </div>
     </div>
@@ -91,42 +94,26 @@
     <!-- /.row -->
 
     <div class="row">
+      {% for curso_id, curso in cursos_home.items %}
       <div class="col-md-4 mb-5">
         <div class="card h-100">
-          <img class="card-img-top" src="https://placehold.it/300x200" alt="">
+          <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr08GdqBMCHSoAPK4qp2POEGkROtX4AeWOaQ&usqp=CAU" alt="">
           <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+            {% if curso.titulo == "Django Fundamentos" %}
+              <h2 class="card-tile">{{ curso.titulo }} </h2>
+            {% else %}
+              <h4 class="card-title">{{ curso_id }} - {{ curso.titulo }}</h4>
+            {% endif %}
+            <p class="card-text">{{ curso.descricao }}</p>
           </div>
           <div class="card-footer">
             <a href="#" class="btn btn-primary">Find Out More!</a>
           </div>
         </div>
       </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://placehold.it/300x200" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://placehold.it/300x200" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
+      {% empty %}
+        <h2>Ainda não há cursos aqui, mas haverá futuramente.</h2>
+      {% endfor %}
     </div>
     <!-- /.row -->
 
@@ -136,7 +123,7 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+      <p class="m-0 text-center text-white">Copyright &copy; {{ nome_empresa }} {% now "Y" as current_year %} {{ current_year }}</p>
     </div>
     <!-- /.container -->
   </footer>
