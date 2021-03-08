@@ -19,13 +19,13 @@ def index(request):
     }
 
     # redenriza a page index.html passando variáveis como parâmetro para serem usadas na page
-    return render(request, 'index.html', {'nome_empresa': nome_empresa, 'descricao_empresa': descricao_empresa, 'contato_empresa': contato_empresa,
+    return render(request, 'empresa/index.html', {'nome_empresa': nome_empresa, 'descricao_empresa': descricao_empresa, 'contato_empresa': contato_empresa,
                                           'cursos_home': cursos_home})
 
 
-def contact(request, id=5):
-    return HttpResponse("pagina contatos", id)
+def contact(request):
+    return render(request, 'empresa/contact.html')
 
 
 def about(request):
-    return HttpResponse("Pagina sobre")
+    return render(request, 'empresa/about.html')

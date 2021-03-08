@@ -1,0 +1,58 @@
+{% extends "empresa/base.html" %}
+{% load meus_filtros %}
+
+{% block header %}
+{% include 'empresa/includes/header.html' with titulo='OrtonSec' descricao='Conteudos a nível engenharia' %}
+{% endblock header %}
+
+{% block conteudo %}
+    <div class="row">
+      <div class="col-md-8 mb-5">
+        <h2>What We Do</h2>
+        <hr>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
+        <a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
+      </div>
+      <div class="col-md-4 mb-5">
+        <h2>Dados para contato</h2>
+        <hr>
+        <address>
+          <strong>Isaias Orton</strong>
+          <br>{{ contato_empresa.endereco|remover_letra:"a" }}
+        </address>
+        <address>
+          <abbr title="Phone">P:</abbr>
+          {{ contato_empresa.telefone }}
+          <br>
+          <abbr title="Email">E:</abbr>
+          <a href="mailto:#">{{ contato_empresa.email }}</a>
+        </address>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+      {% for curso_id, curso in cursos_home.items %}
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr08GdqBMCHSoAPK4qp2POEGkROtX4AeWOaQ&usqp=CAU" alt="">
+          <div class="card-body">
+            {% if curso.titulo == "Django Fundamentos" %}
+              <h2 class="card-tile">{{ curso.titulo }} </h2>
+            {% else %}
+              <h4 class="card-title">{{ curso_id }} - {{ curso.titulo }}</h4>
+            {% endif %}
+            <p class="card-text">{{ curso.descricao }}</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+        <h2>Ainda não há cursos aqui, mas haverá futuramente.</h2>
+      {% endfor %}
+    </div>
+    <!-- /.row -->
+
+{% endblock conteudo %}
