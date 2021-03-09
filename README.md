@@ -14,7 +14,9 @@ Projeto realizado durante o curso de django templates oferecido pela treinaWeb. 
 $ git clone https://github.com/isaias0rt0n/django_templates.git
 $ cd django_templates
 $ pip install -r requirements.txt
+$ cd django_templates
 $ python manage.py runserver
 ```
 
 ## :film_strip: Demo
+![](https://github.com/isaias0rt0n/django_templates/blob/main/templates_django.gif)
